@@ -2,8 +2,8 @@ import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import request, { Response } from 'supertest';
 import type { Server } from 'http';
-import { InMemoryMessageRepository } from '../src/infrastructure/repositories/InMemoryMessageRepository';
-import { MessageModule } from '../src/message/message.module';
+import { InMemoryMessageRepository } from '../infrastructure/repositories/InMemoryMessageRepository';
+import { MessageModule } from '../message/message.module';
 
 const mockPublisher = { publish: jest.fn() };
 const mockMessageModel = {};

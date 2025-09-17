@@ -1,6 +1,6 @@
-import { CreateMessageUseCase } from './CreateMessageUseCase';
-import { InMemoryMessageRepository } from '../infrastructure/repositories/InMemoryMessageRepository';
-import { Message } from '../domain/message/Message';
+import { CreateMessageUseCase } from '../../application/CreateMessageUseCase';
+import { InMemoryMessageRepository } from '../../infrastructure/repositories/InMemoryMessageRepository';
+import { Message } from '../../domain/message/Message';
 
 describe('CreateMessageUseCase', () => {
   let useCase: CreateMessageUseCase;

@@ -1,20 +1,20 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Message } from '../domain/message/Message';
 import { MessageRepository } from '../domain/message/MessageRepository';
 
 @Injectable()
 export class RetrieveMessagesUseCase {
+  private readonly logger = new Logger(RetrieveMessagesUseCase.name);
   constructor(
     @Inject('MessageRepository')
     private readonly repository: MessageRepository,
   ) {}
 
   async execute(): Promise<Message[]> {
-    const messages: Message[] = [];
-
     try {
-      (await this.repository.findAll()).map((message) =>
-        messages.push(
+      const items = await this.repository.findAll();
+      return items.map(
+        (message) =>
           new Message(
             message.id,
             message.userId,
@@ -22,12 +22,13 @@ export class RetrieveMessagesUseCase {
             message.content,
             message.createdAt,
           ),
-        ),
       );
     } catch (error) {
-      console.log(error);
+      this.logger.error(
+        'RetrieveMessagesUseCase.execute failed',
+        error as Error,
+      );
+      return [];
     }
-
-    return messages;
   }
 }
