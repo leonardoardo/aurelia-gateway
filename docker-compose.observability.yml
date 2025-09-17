@@ -1,0 +1,66 @@
+version: "3.8"
+
+services:
+  # ============================
+  # Prometheus (coleta métricas)
+  # ============================
+  prometheus:
+    image: prom/prometheus:v2.52.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./observability/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+
+  # ============================
+  # Grafana (dashboards)
+  # ============================
+  grafana:
+    image: grafana/grafana:10.4.0
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
+      - loki
+
+  # ============================
+  # Loki (logs centralizados)
+  # ============================
+  loki:
+    image: grafana/loki:2.9.2
+    container_name: loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+
+  # ============================
+  # Promtail (coleta logs locais)
+  # ============================
+  promtail:
+    image: grafana/promtail:2.9.2
+    container_name: promtail
+    volumes:
+      - /var/log:/var/log
+      - ./observability/promtail-config.yml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+
+  # ============================
+  # Jaeger (tracing distribuído)
+  # ============================
+  jaeger:
+    image: jaegertracing/all-in-one:1.57
+    container_name: jaeger
+    ports:
+      - "16686:16686"   # UI
+      - "6831:6831/udp" # Agent
+      - "6832:6832/udp"
+      - "14268:14268"
+      - "14250:14250"

@@ -145,19 +145,15 @@ GET http://localhost:3000/metrics
 
 ---
 
-## 🔄 CI/CD
+## 🔄 CI
 
-This project includes **GitHub Actions workflows**:
+This project includes a **GitHub Actions workflow** for Continuous Integration:
 
-* **CI**:
+* **Lint** — Ensures code style and quality
+* **Unit + e2e tests** — Runs automated tests with Jest
+* **Coverage report** — Generates coverage and uploads to Codecov
 
-  * Lint
-  * Unit + e2e tests
-  * Build
-  * Docker image publish
-* **CD** (optional):
-
-  * Deploys to server using `docker-compose pull && docker-compose up -d`
+> ⚠️ There is no Docker image build or deployment step in this pipeline.
 
 ---
 
