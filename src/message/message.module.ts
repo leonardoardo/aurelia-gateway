@@ -12,7 +12,12 @@ import { MessagePublisherProvider } from 'src/infrastructure/providers/MessagePu
     MongooseModule.forFeature([{ name: 'Message', schema: MessageSchema }]),
   ],
   controllers: [MessageController],
-  providers: [MessageRepositoryProvider, CreateMessageUseCase, RetrieveMessagesUseCase, MessagePublisherProvider],
+  providers: [
+    MessageRepositoryProvider,
+    CreateMessageUseCase,
+    RetrieveMessagesUseCase,
+    MessagePublisherProvider,
+  ],
   exports: [CreateMessageUseCase],
 })
-export class MessageModule { }
+export class MessageModule {}

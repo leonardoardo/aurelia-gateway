@@ -4,7 +4,9 @@ import { MessagePublisher } from '../../domain/message/MessagePublisher';
 import { Message } from '../../domain/message/Message';
 
 @Injectable()
-export class KafkaMessagePublisher implements MessagePublisher, OnModuleInit, OnModuleDestroy {
+export class KafkaMessagePublisher
+  implements MessagePublisher, OnModuleInit, OnModuleDestroy
+{
   private kafka: Kafka;
   private producer: Producer;
 

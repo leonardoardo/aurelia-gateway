@@ -5,7 +5,7 @@ import { MetricsController } from './metrics.controller';
 import { MetricsInterceptor } from './metrics.interceptor';
 
 @Module({
-    providers: [MetricsService, MetricsInterceptor],
-    controllers: [MetricsController]
+  providers: [MetricsService, MetricsInterceptor],
+  controllers: [MetricsController],
 })
-export class MetricsModule { }
+export class MetricsModule {}

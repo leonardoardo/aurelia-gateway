@@ -7,7 +7,8 @@ import { MessageDocument } from '../schemas/message.schema';
 
 export class MongoMessageRepository implements MessageRepository {
   constructor(
-    @InjectModel('Message') private readonly messageModel: Model<MessageDocument>,
+    @InjectModel('Message')
+    private readonly messageModel: Model<MessageDocument>,
   ) {}
 
   async save(message: Message): Promise<void> {
@@ -18,7 +19,14 @@ export class MongoMessageRepository implements MessageRepository {
   async findAll(): Promise<Message[]> {
     const docs = await this.messageModel.find().lean();
     return docs.map(
-      (doc) => new Message(doc.id, doc.userId, doc.channel, doc.content, doc.createdAt),
+      (doc) =>
+        new Message(
+          doc.id,
+          doc.userId,
+          doc.channel,
+          doc.content,
+          doc.createdAt,
+        ),
     );
   }
 }

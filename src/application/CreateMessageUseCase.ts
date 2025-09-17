@@ -18,10 +18,15 @@ export class CreateMessageUseCase {
 
     @Inject('MessagePublisher')
     private readonly publisher: MessagePublisher,
-  ) { }
+  ) {}
 
   async execute(input: CreateMessageInput): Promise<Message> {
-    const message = new Message(uuid(), input.userId, input.channel, input.content);
+    const message = new Message(
+      uuid(),
+      input.userId,
+      input.channel,
+      input.content,
+    );
     await this.repository.save(message);
     await this.publisher.publish(message);
     return message;

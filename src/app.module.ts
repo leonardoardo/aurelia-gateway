@@ -8,7 +8,7 @@ import { MetricsModule } from './infrastructure/observability/metrics.module';
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/aurelia'),
     MessageModule,
-    MetricsModule
+    MetricsModule,
   ],
 })
 export class AppModule {}

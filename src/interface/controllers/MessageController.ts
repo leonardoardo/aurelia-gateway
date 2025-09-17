@@ -17,6 +17,10 @@ export class MessageController {
   @Post()
   async create(@Body() body: CreateMessageDto) {
     const message = await this.createMessageUseCase.execute(body);
-    return { id: message.id, content: message.content, channel: message.channel };
+    return {
+      id: message.id,
+      content: message.content,
+      channel: message.channel,
+    };
   }
 }
