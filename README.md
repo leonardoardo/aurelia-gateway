@@ -2,8 +2,8 @@
 
 ![Aurelia Gateway](https://via.placeholder.com/1000x250.png?text=Aurelia+Gateway)  
 
-[![CI](https://github.com/your-org/aurelia-gateway/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/aurelia-gateway/actions/workflows/ci.yml)
-[![Coverage Status](https://img.shields.io/codecov/c/github/your-org/aurelia-gateway?style=flat-square)](https://codecov.io/gh/your-org/aurelia-gateway)
+[![CI](https://github.com/leonardoardo/aurelia-gateway/actions/workflows/ci.yml/badge.svg)](https://github.com/leonardoardo/aurelia-gateway/actions/workflows/ci.yml)
+[![Coverage Status](https://img.shields.io/codecov/c/github/leonardoardo/aurelia-gateway?style=flat-square)](https://codecov.io/gh/leonardoardo/aurelia-gateway)
 ![Node.js Version](https://img.shields.io/badge/node-20%2B-green?style=flat-square&logo=node.js)
 ![Docker](https://img.shields.io/badge/docker-ready-blue?style=flat-square&logo=docker)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)
@@ -70,7 +70,7 @@ aurelia-gateway/
 
 ### 1. Clone repository
 ```bash
-git clone https://github.com/your-org/aurelia-gateway.git
+git clone https://github.com/leonardoardo/aurelia-gateway.git
 cd aurelia-gateway
 ````
 
